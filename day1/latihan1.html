@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <title>latihan2</title>
+      <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+      <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   </head>
+   <body>
+      <div id="root"></div>
+      <script type="text/babel">
+
+      // 🔹 Komponen tombol
+      function CounterButtons({isDisabled, onTambah, onKurang, onReset }) {
+         return (
+            <div>
+               <button disabled={isDisabled} onClick={onTambah}>+</button>
+               <button disabled={isDisabled} onClick={onKurang}>-</button>
+               <button onClick={onReset}>reset</button>
+            </div>
+         );
+      }
+
+      // 🔹 Komponen utama (punya state)
+      function Counter({ name }) {
+         const [angka, setAngka] = React.useState(0);
+         const [isDisabled, setIsDisabled] = React.useState(false)
+
+         function tambah() {
+            if(angka < 10){
+               setAngka(angka + 1);
+            } else{
+               setAngka('done.')
+               setIsDisabled(true)
+            }
+         }
+         function kurang() {
+            if(angka > 0){
+               setAngka(angka - 1);
+            } else{
+               setAngka('done.')
+               setIsDisabled(true)
+            }
+         }
+         function reset() {
+            setAngka(0);
+            setIsDisabled(false)
+         }
+
+         return (
+            <div style={{ margin: "10px", padding: "10px", border: "1px solid gray" }}>
+               <h3>{name}</h3>
+               <p>Nilai: {angka}</p>
+               {/* Gunakan komponen tombol */}
+               <CounterButtons 
+                  isDisabled={isDisabled}
+                  onTambah={tambah} 
+                  onKurang={kurang} 
+                  onReset={reset} 
+               />
+            </div>
+         );
+      }
+
+      // 🔹 Wrapper
+      function App() {
+         return (
+            <div>
+               <Counter name="Counter 1" />
+            </div>
+         );
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+      </script>
+   </body>
+</html>
