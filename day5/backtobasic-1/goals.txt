@@ -1,0 +1,8 @@
+- Menampilkan daftar menu makanan.
+- Ada komponen utama App.
+- Komponen MenuItem (pakai props).
+- Daftar menu dirender pakai collection component (map).
+- Ada kondisi: kalau stok habis, tampilkan tulisan "Sold Out" (conditional rendering).
+- Styling sederhana pakai inline style + className.
+- MenuItem dibuat sebagai pure component.
+- Ada komponen nested: MenuList berisi kumpulan MenuItem.
