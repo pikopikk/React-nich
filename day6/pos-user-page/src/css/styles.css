@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer base {
+  body {
+    @apply text-base;
+  }
+}
+
+@layer utilities{
+
+}
