@@ -1,6 +1,6 @@
-import UserHeroBackground from "./UserHeroBackground";
+import HeroBackground from "./HeroBackground";
 
-export default function UserHero(){
+export default function Hero(){
   return(
     <section className="relative w-full h-80 overflow-hidden">
       <div className="pointer-events-none inset-0 absolute flex items-center justify-center z-10">
@@ -10,7 +10,7 @@ export default function UserHero(){
       </div>
 
       <div className="relative carousel w-full h-full">
-        <UserHeroBackground/>
+        <HeroBackground/>
       </div>
     </section>
   )

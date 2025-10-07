@@ -1,16 +1,16 @@
-import UserFooter from "../components/user/navbar-footer/UserFooter";
-import UserNavbar from "../components/user/navbar-footer/UserNavbar";
+import Footer from "../components/user/navbar-footer/Footer";
+import Navbar from "../components/user/navbar-footer/Navbar";
 
 export default function UserPage({children}){
   return(
-    <>
-      <UserNavbar/>
+    <div>
+      <Navbar/>
 
       <div>
         {children}
       </div>
 
-      <UserFooter/>
-    </>
+      <Footer/>
+    </div>
   )
 }

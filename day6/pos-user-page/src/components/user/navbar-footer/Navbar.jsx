@@ -1,4 +1,4 @@
-export default function UserNavbar(){
+export default function Navbar(){
   return(
     <div className="navbar bg-[#075B5E] shadow-sm">
       <div className="navbar-start">

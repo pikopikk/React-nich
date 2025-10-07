@@ -1,6 +1,6 @@
 import { RiInstagramFill, RiYoutubeFill, RiTiktokFill, RiFacebookCircleFill } from "@remixicon/react"
 
-export default function UserFooter(){
+export default function Footer(){
   return(
     <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
       <aside>
