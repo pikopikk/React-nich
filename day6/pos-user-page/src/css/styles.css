@@ -26,5 +26,8 @@
 }
 
 @layer utilities{
-
+  .badge-costum {
+    padding-inline: 0.25rem !important; /* defaultnya sekitar 0.5rem */
+    height: 1.25rem !important; /* opsional: kecilkan tinggi juga */
+  }
 }

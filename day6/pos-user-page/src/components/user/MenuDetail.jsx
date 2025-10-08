@@ -1,37 +1,94 @@
-import { Link } from "react-router-dom";
-import {RiShoppingCartLine, RiArrowLeftCircleFill, RiQuestionFill} from '@remixicon/react'
+import { Link, useParams } from "react-router-dom";
+import {RiShoppingCartLine, RiArrowLeftCircleFill, RiQuestionFill, RiArrowRightCircleFill, RiBowlFill, RiDrinks2Fill} from '@remixicon/react'
+import { menus } from "../../data/menu";
 
 export default function MenuDetail(){
+  const {id} = useParams()
+  const menu = menus.find((item) => item.id === Number(id))
+
+  if(!menu){
+    return(
+      <h1>asda</h1>
+    )
+  }
+
+  const {title, image, price, category, isBest, isSignature, description} = menu
+
   return(
-    <div className="relative hero bg-base-200 min-h-screen">
-      <Link 
-        to="/"
-        className="absolute top-5 left-5 text-3xl text-primary hover:text-secondary cursor-pointer">
-        <RiArrowLeftCircleFill className="w-9 h-9"/>
-      </Link>
-      <div className="hero-content h-[80%] bg-amber-200 flex-col lg:flex-row">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
+    <section className="w-full">
+      <div className="hero min-h-[280px] relative">
+        <img className="h-full w-full" src={image} alt={image} />
+        <MenuDetailBackButton/>
+      </div>
+
+      <div className="flex flex-col items-start gap-2 p-5 space-y-3">
+        <div className="flex flex-col gap-1 border-b border-gray-300/50 w-full pb-3">
+          <h1 className="text-3xl font-bold">
+            Rp {Number(price).toLocaleString("id-ID")}
+          </h1>
+          <h2 className="text-lg ">
+            {title}
+          </h2>
+        </div>
         <div>
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-            quasi. In deleniti eaque aut repudiandae et a id nisi.
+          <div>
+            <div className="flex flex-col items-start w-full mb-2 gap-1">
+              <h4 className="text-base">
+                kategori menu:
+              </h4>
+              <div className="flex flex-row gap-2">
+                {/* cek, apakah termasuk 'best' dan atau 'signature'*/}
+                {category === "makanan" && (
+                  <div className="badge badge-outline badge-info flex items-center gap-1">
+                    <RiBowlFill className="w-5 h-5" />
+                  </div>
+                )}
+                {category === "minuman" && (
+                  <div className="badge badge-outline badge-accent flex items-center gap-1">
+                    <RiDrinks2Fill className="w-5 h-5" />
+                  </div>
+                )}
+                {isBest && <div className="badge badge-outline badge-primary">Best</div>}
+                {isSignature && <div className="badge badge-outline badge-secondary">Signature</div>}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-base font-semibold">
+            deskripsi menu:
+          </h4>
+          <p className="text-sm">
+            {description}
           </p>
-          
-          <MenuDetailButton/>
         </div>
       </div>
-    </div>
+
+      <MenuDetailButton/>
+    </section>
+  )
+}
+
+  // {isBest &&(
+  //   <div className="badge badge-costum badge-outline badge-primary">
+  //     <RiStarFill className="w-3 h-3"/>
+  //   </div>
+  // )}
+
+function MenuDetailBackButton(){
+  return(
+    <Link 
+      to="/"
+      className="absolute top-5 left-5 text-3xl text-primary hover:text-secondary cursor-pointer">
+      <RiArrowLeftCircleFill className="w-9 h-9"/>
+    </Link>
   )
 }
 
 function MenuDetailButton(){
   return(
     <div className="flex flex-row items-center justify-between gap-0 fixed bottom-0 left-0 w-full p-5 bg-base-100 border-t border-base-300">
-      <Link className="flex flex-col items-center w-[35%]">
+      <Link className="flex flex-col items-center w-[35%] gap-1">
         <RiQuestionFill/>
         <p>
           Cara Pesan
@@ -40,10 +97,9 @@ function MenuDetailButton(){
       <button className="flex justify-center items-center w-[30%]">
         <RiShoppingCartLine/>
       </button>
-      <button className="flex items-center justify-center w-[35%]">
+      <button className="flex flex-col items-center justify-center w-[35%] gap-1">
+        <RiArrowRightCircleFill/>
         Pesan Sekarang
-        <br />
-        Rp{/* {harga} */}
       </button>
     </div>
   )

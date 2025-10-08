@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
-import {RiShoppingCartLine} from '@remixicon/react'
+import {RiShoppingCartLine, RiStarFill, RiQuillPenFill} from '@remixicon/react'
 
-export default function CardMenu({title, image, price, isBest = false}){
+export default function CardMenu({title, image, price, isBest = false, isSignature = false}){
   return(
-    <Link 
-      className="mt-2 ease-out duration-300 hover:scale-105 w-32 min-h-52" 
-      to='/InformasiMenu'>
+    <div className="mt-2 ease-out duration-300 hover:scale-105 w-32 min-h-58">
       <div className="card bg-base-100 w-full h-full shadow-sm">
         <figure className="relative">
           <UserIconCart/>
@@ -16,20 +13,25 @@ export default function CardMenu({title, image, price, isBest = false}){
           />
         </figure>
         <div className="card-body p-3 w-32">
-          <h2 className="h-full card-title text-base truncate line-clamp-1">
+          <h2 className="h-12 card-title text-base font-semibold line-clamp-2 text-ellipsis">
             {title}
           </h2>
           <div className="card-actions items-end justify-end h-full">
-            {isBest &&(
-              <div className="badge badge-secondary text-xs">
-                Best
+            {isSignature &&(
+              <div className="badge badge-costum badge-outline badge-secondary">
+                <RiQuillPenFill className="w-3 h-3"/>
               </div>
             )}
-            <div className="badge badge-outline">{price}</div>
+            {isBest &&(
+              <div className="badge badge-costum badge-outline badge-primary">
+                <RiStarFill className="w-3 h-3"/>
+              </div>
+            )}
+            <div className="badge badge-outline">Rp {Number(price).toLocaleString("id-ID")}</div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 
