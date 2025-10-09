@@ -3,7 +3,7 @@ import Navbar from "../../components/user/navbar-footer/Navbar";
 
 export default function MenuDetailPage() {
   return(
-    <main className="min-h-screen bg-red-500">
+    <main>
       <Navbar/>
       <MenuDetail/>
     </main>

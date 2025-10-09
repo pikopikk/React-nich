@@ -26,6 +26,28 @@
 }
 
 @layer utilities{
+  .navbar-icon {
+    background-color: transparent !important;
+    border: none !important;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .navbar-icon:hover {
+    transform: scale(0.9);
+  }
+
+  .navbar-icon:active {
+    transform: scale(0.85);
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  .menu {
+    --menu-active-bg: #BCA88D;
+    --menu-active-fg: white;
+  }
+  .btn-costum-1 {
+    @apply px-3 py-0.5 text-[#F1F0E4] font-bold bg-[#3E3F29] rounded-4xl outline-2 outline-[#3E3F29]  transition-colors ease-in-out duration-300 hover:bg-[#3E3F29] hover:text-[#3E3F29] hover:cursor-pointer focus:outline-2 focus:outline-[#3E3F29];
+  }
   .badge-costum {
     padding-inline: 0.25rem !important; /* defaultnya sekitar 0.5rem */
     height: 1.25rem !important; /* opsional: kecilkan tinggi juga */

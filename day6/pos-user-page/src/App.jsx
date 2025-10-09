@@ -1,8 +1,9 @@
 import './css/styles.css'
 import {Routes, Route} from 'react-router-dom'
 import Home from './pages/user/Home'
-import BuyTutor from './pages/user/BuyTutor'
+import BuyTutorPage from './pages/user/BuyTutorPage'
 import MenuDetailPage from './pages/user/MenuDetailPage'
+import ServiceInfoPage from './pages/user/ServiceInfoPage'
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='/CaraPesan' element={<BuyTutor/>} />
+          <Route path='/InformasiLayanan' element={<ServiceInfoPage/>} />
+          <Route path='/CaraPesan' element={<BuyTutorPage/>} />
           <Route path='/InformasiMenu/:id' element={<MenuDetailPage/>} />
         </Routes>
       </main>

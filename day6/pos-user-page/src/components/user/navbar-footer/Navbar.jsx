@@ -1,31 +1,100 @@
+import { Link } from "react-router-dom";
+import { RiHome9Fill, RiHandCoinFill, RiQuestionFill, RiBarChartHorizontalLine, RiSearchLine, RiShoppingCartLine, RiBowlFill} from "@remixicon/react";
+
 export default function Navbar(){
+  const navItems = [
+    {
+      name: 'Home',
+      icon: <RiHome9Fill className="text-stone-900 w-5 h-5" />,
+      type: "link",
+      path: "/",
+    },
+    {
+      name: "Menu",
+      icon: <RiBowlFill className="text-stone-900 w-5 h-5" />,
+      type: "anchor",
+      path: "#features",
+    },
+    {
+      name: 'Layanan',
+      icon: <RiHandCoinFill className="text-white w-5 h-5" />,
+      type: "link",
+      path: "/InformasiLayanan",
+    },
+    {
+      name: 'Cara Pesan',
+      icon: <RiQuestionFill className="text-stone-900 w-5 h-5" />,
+      type: "link",
+      path: "/CaraPesan",
+    },
+  ]
+
   return(
-    <div className="navbar bg-[#075B5E] shadow-sm">
+    <div className="navbar top-0 left-0 fixed z-50 bg-[#3E3F29] shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle navbar-icon">
+            <RiBarChartHorizontalLine className="text-white w-5 h-5"/>
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><a>Homepage</a></li>
-            <li><a>Portfolio</a></li>
-            <li><a>About</a></li>
+            className="menu menu-sm dropdown-content gap-3 bg-stone-50 rounded-box z-1 mt-3 w-52 p-2 shadow items-start">
+            {navItems.map((item, index) => (
+            <li
+              key={index}
+              className={`pb-2 border-b border-[#3E3F29]/50 w-full ${
+                index === navItems.length - 1 ? "border-none" : ""
+              }`}
+            >
+              {item.type === "link" ? (
+                <Link
+                  to={item.path}
+                  className={`
+                    text-stone-900 text-base flex flex-row items-center gap-2
+                    ${
+                      item.name === "Layanan"
+                        ? "bg-[#BCA88D] text-white hover:bg-[#BCA88D]"
+                        : "text-stone-900 hover:text-[#BCA88D]"
+                    }`}
+                >
+                  {item.icon}
+                  <span className={
+                    `w-[1px] h-5 inline-block 
+                    ${
+                      item.name === "Layanan" ? "bg-white" : " bg-[#BCA88D]"
+                    }`} />
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  href={item.path}
+                  className="text-stone-900 text-base flex flex-row items-center gap-2"
+                >
+                  {item.icon}
+                  <span className="w-[1px] h-5 bg-[#3E3F29] inline-block" />
+                  {item.name}
+                </a>
+              )}
+            </li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to={'/'} className="text-2xl font-black text-white">
+          GuritaYaki.
+        </Link>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /> </svg>
+        <button className="btn btn-ghost btn-circle navbar-icon">
+          <RiSearchLine className="w-5 h-5"/>
         </button>
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle navbar-icon">
           <div className="indicator">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /> </svg>
-            <span className="badge badge-xs badge-primary indicator-item bg-[#FF3F33] border-0"></span>
+            <RiShoppingCartLine className="w-5 h-5"/>
+            <span className="hidden badge badge-xs indicator-item bg-[#2b2b13] border-0">
+              3
+            </span>
           </div>
         </button>
       </div>
