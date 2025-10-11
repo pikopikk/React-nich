@@ -86,9 +86,7 @@ export default function Navbar(){
         </Link>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle navbar-icon">
-          <RiSearchLine className="w-5 h-5"/>
-        </button>
+        <SearchBar/>
         <button className="btn btn-ghost btn-circle navbar-icon">
           <div className="indicator">
             <RiShoppingCartLine className="w-5 h-5"/>
@@ -99,5 +97,15 @@ export default function Navbar(){
         </button>
       </div>
     </div>
+  )
+}
+
+function SearchBar(){
+  return(
+    <Link 
+      to={'/CariMenu'}
+      className="btn btn-ghost btn-circle navbar-icon">
+      <RiSearchLine className="w-5 h-5"/>
+    </Link>
   )
 }

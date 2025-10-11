@@ -10,7 +10,7 @@ export default function BuyTutorial(){
           Cara Pesan
         </h2>
         <Link to={'/CaraPesan'}>
-          <RiQuestionFill className="w-5 h-5 text text-[#7D8D86]"/>
+          <RiQuestionFill className="w-5 h-5 text text-[#7D8D86] btn-press"/>
         </Link>
       </div>
 

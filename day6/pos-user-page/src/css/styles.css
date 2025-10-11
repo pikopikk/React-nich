@@ -26,6 +26,7 @@
 }
 
 @layer utilities{
+  /* navbar only */
   .navbar-icon {
     background-color: transparent !important;
     border: none !important;
@@ -41,6 +42,18 @@
     background-color: transparent !important;
     box-shadow: none !important;
   }
+
+  /* global */
+  .btn-press {
+    transition: transform 0.2s ease-in-out;
+  }
+  .btn-press:hover {
+    transform: scale(0.95);
+  }
+  .btn-press:active {
+    transform: scale(0.9);
+  }
+
   .menu {
     --menu-active-bg: #BCA88D;
     --menu-active-fg: white;

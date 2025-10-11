@@ -26,7 +26,7 @@ export default function ServiceInfo() {
       <h2 className="text-2xl font-bold text-stone-900 flex flex-row items-center gap-2">
         Informasi Layanan 
         <Link to={'/InformasiLayanan'}>
-          <RiQuestionFill className="w-5 h-5 text text-[#7D8D86]"/>
+          <RiQuestionFill className="w-5 h-5 text text-[#7D8D86] btn-press"/>
         </Link>
       </h2>
 

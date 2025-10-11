@@ -22,6 +22,7 @@ export const menus = [
     category: "makanan",
     isBest: true,
     isSignature: true,
+    tersedia: true,
     description: "Takoyaki premium isi gurita segar dengan topping saus khas Jepang dan bonito flakes."
   },
   {
@@ -32,6 +33,7 @@ export const menus = [
     category: "makanan",
     isBest: false,
     isSignature: true,
+    tersedia: false,
     description: "Takoyaki original dengan tekstur lembut dan saus mayones yang gurih."
   },
   {
@@ -42,6 +44,7 @@ export const menus = [
     category: "makanan",
     isBest: true,
     isSignature: true,
+    tersedia: true,
     description: "Pancake gurih khas Jepang dengan campuran sayur, daging, dan saus manis asin."
   },
   {
@@ -52,6 +55,7 @@ export const menus = [
     category: "makanan",
     isBest: false,
     isSignature: true,
+    tersedia: true,
     description: "Versi sederhana okonomiyaki dengan cita rasa autentik dan topping ringan."
   },
   {
@@ -62,6 +66,7 @@ export const menus = [
     category: "makanan",
     isBest: false,
     isSignature: true,
+    tersedia: false,
     description: "Sushi segar dengan potongan salmon pilihan dan nasi beraroma cuka khas Jepang."
   },
   {
@@ -72,6 +77,7 @@ export const menus = [
     category: "makanan",
     isBest: true,
     isSignature: false,
+    tersedia: true,
     description: "Kombinasi sushi premium dengan variasi isi dan saus spesial chef."
   },
   {
@@ -82,6 +88,7 @@ export const menus = [
     category: "makanan",
     isBest: false,
     isSignature: false,
+    tersedia: false,
     description: "Rebusan khas Jepang dengan tahu, telur, dan fishcake dalam kuah kaldu ringan."
   },
   {
@@ -92,6 +99,7 @@ export const menus = [
     category: "makanan",
     isBest: false,
     isSignature: false,
+    tersedia: true,
     description: "Mi ramen hangat dengan kuah kaldu gurih dan topping telur serta irisan daging."
   },
   {
@@ -102,6 +110,7 @@ export const menus = [
     category: "minuman",
     isBest: false,
     isSignature: false,
+    tersedia: true,
     description: "Air mineral murni yang menyegarkan dan menyehatkan tubuh."
   },
   {
@@ -112,6 +121,7 @@ export const menus = [
     category: "minuman",
     isBest: false,
     isSignature: false,
+    tersedia: false,
     description: "Minuman bersoda klasik dengan rasa manis menyegarkan."
   },
   {
@@ -122,6 +132,7 @@ export const menus = [
     category: "minuman",
     isBest: false,
     isSignature: false,
+    tersedia: true,
     description: "Teh manis dingin yang pas untuk menemani hidangan gurihmu."
   },
   {
@@ -132,6 +143,7 @@ export const menus = [
     category: "minuman",
     isBest: true,
     isSignature: false,
+    tersedia: false,
     description: "Minuman lemon segar dengan es batu yang menambah kesegaran setiap tegukan."
   },
   {
@@ -142,6 +154,7 @@ export const menus = [
     category: "minuman",
     isBest: false,
     isSignature: false,
+    tersedia: true,
     description: "Minuman matcha Jepang dengan susu creamy dan rasa manis seimbang."
   },
   {
@@ -152,6 +165,7 @@ export const menus = [
     category: "minuman",
     isBest: true,
     isSignature: true,
+    tersedia: true,
     description: "Thai tea autentik dengan rasa teh pekat berpadu dengan susu manis yang lembut."
   },
 ];
