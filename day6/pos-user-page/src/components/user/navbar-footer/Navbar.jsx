@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { RiHome9Fill, RiHandCoinFill, RiQuestionFill, RiBarChartHorizontalLine, RiSearchLine, RiShoppingCartLine, RiBowlFill} from "@remixicon/react";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar(){
+  const {cart} = useCart() // ambil data cart global
+  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0); // total semua qty
+
   const navItems = [
     {
       name: 'Home',
@@ -88,12 +92,16 @@ export default function Navbar(){
       <div className="navbar-end">
         <SearchBar/>
         <button className="btn btn-ghost btn-circle navbar-icon">
-          <div className="indicator">
+          <Link 
+            to={'/Keranjang'}
+            className="indicator">
             <RiShoppingCartLine className="w-5 h-5"/>
-            <span className="hidden badge badge-xs indicator-item bg-[#2b2b13] border-0">
-              3
-            </span>
-          </div>
+            {cartCount > 0 &&(
+              <span className="badge badge-xs indicator-item bg-[#2b2b13] border-0">
+                {cartCount}
+              </span>
+            )}
+          </Link>
         </button>
       </div>
     </div>

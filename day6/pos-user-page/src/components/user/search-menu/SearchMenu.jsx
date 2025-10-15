@@ -2,7 +2,6 @@ import { useState } from "react";
 import SearchMenuBar from "./SearchMenuBar";
 import { menus } from "../../../data/menu";
 import CardMenu from "../CardMenu";
-import { Link } from "react-router-dom";
 
 export default function SearchMenu() {
   const [query, setQuery] = useState("");
@@ -29,7 +28,7 @@ export default function SearchMenu() {
   const showResults = query.trim() !== "" || activeFilters.length > 0;
 
   return (
-    <section className="min-h-screen bg-[#F1F0E4] w-full">
+    <section className="min-h-screen bg-[#F1F0E4] w-full  mt-[64px]">
       <SearchMenuBar
         query={query}
         setQuery={setQuery}
@@ -41,15 +40,11 @@ export default function SearchMenu() {
         <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-4 p-5 w-full">
           {filteredMenus.length > 0 ? (
             filteredMenus.map((item, index) => (
-              <Link
+              <CardMenu 
                 key={index}
-                to={`/InformasiMenu/${item.id}`}
-              >
-                <CardMenu 
                 className="w-40"
                 {...item}
               />
-              </Link>
             ))
           ) : (
             <p className="text-center text-stone-600 col-span-full mt-10">

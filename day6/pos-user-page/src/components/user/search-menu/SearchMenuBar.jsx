@@ -61,7 +61,7 @@ export default function SearchMenuBar({ query, setQuery, activeFilters, setActiv
 
       {/* Search Bar + Batal */}
       <div className="w-full flex flex-row gap-4 justify-center items-center">
-        <div className="flex items-center w-[90%] max-w-md bg-[#F9F9F4] border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+        <div className="flex items-center w-[90%] max-w-md bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
           <RiSearchLine className="text-gray-500 w-5 h-5 mr-2 btn-press" />
           <input
             type="text"

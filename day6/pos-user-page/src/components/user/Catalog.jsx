@@ -1,6 +1,5 @@
 import CardMenu from "./CardMenu";
 import { menus } from "../../data/menu";
-import { Link } from "react-router-dom";
 import {RiBowlFill, RiDrinks2Fill} from '@remixicon/react'
 
 export default function Catalog(){
@@ -9,6 +8,7 @@ export default function Catalog(){
     .filter((menu) => menu.category === "makanan")
     .sort((a, b) => {
       const getPriority = (item) => {
+        if (!item.tersedia) return -1; // paling rendah, akan di akhir
         if (item.isBest && item.isSignature) return 3
         if (item.isSignature) return 2
         if (item.isBest) return 1
@@ -22,6 +22,7 @@ export default function Catalog(){
     .filter((menu) => menu.category === "minuman")
     .sort((a, b) => {
       const getPriority = (item) => {
+        if (!item.tersedia) return -1; // paling rendah, akan di akhir
         if (item.isBest && item.isSignature) return 3
         if (item.isSignature) return 2
         if (item.isBest) return 1
@@ -41,9 +42,7 @@ export default function Catalog(){
           <div className="carousel carousel-center rounded-box p-0 flex flex-row items-center gap-4">
             {foodMenus.map((menu) => (
               <div className="carousel-item" key={menu.id}>
-                <Link to={`/InformasiMenu/${menu.id}`}>
-                  <CardMenu {...menu}/>
-                </Link>
+                <CardMenu {...menu}/>
               </div>
             ))}
           </div>
@@ -59,9 +58,7 @@ export default function Catalog(){
           <div className="carousel carousel-center rounded-box pt-0 flex flex-row items-center gap-4">
             {drinkMenus.map((menu) => (
               <div className="carousel-item" key={menu.id}>
-                <Link to={`/InformasiMenu/${menu.id}`}>
-                  <CardMenu {...menu}/>
-                </Link>
+                <CardMenu {...menu}/>
               </div>
             ))}
           </div>

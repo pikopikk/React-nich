@@ -5,6 +5,7 @@ import BuyTutorPage from './pages/user/BuyTutorPage'
 import MenuDetailPage from './pages/user/MenuDetailPage'
 import ServiceInfoPage from './pages/user/ServiceInfoPage'
 import SearchMenuPage from './pages/user/SearchMenuPage'
+import CartPage from './pages/user/CartPage'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/InformasiLayanan' element={<ServiceInfoPage/>} />
           <Route path='/CaraPesan' element={<BuyTutorPage/>} />
           <Route path='/InformasiMenu/:id' element={<MenuDetailPage/>} />
+          <Route path='/Keranjang' element={<CartPage/>} />
         </Routes>
       </main>
     </div>
