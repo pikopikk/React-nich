@@ -4,12 +4,66 @@ import { useNavigate } from "react-router-dom";
 import QuantityStepper from "./QuantityStepper";
 import InputOrderReceipt from "./InputOrderReceipt";
 import InputOrderNote from "./InputOrderNote";
+import { useState } from "react";
 
 export default function Cart() {
   const { cart, removeFromCart, totalPrice } = useCart();
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    console.log("Checkout diklik")
+    if (cart.length === 0) return;
+    setLoading(true);
+
+    try {
+      // 1️⃣ Buat transaksi di backend
+      const response = await fetch("http://localhost:5000/create-transaction", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderId: `ORDER-${Date.now()}`,
+          grossAmount: totalPrice,
+          customerName: "Taufikhan Rayana", // nanti bisa ambil dari input user
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!window.snap) {
+        alert("Midtrans Snap belum siap! Coba refresh halaman.");
+        setLoading(false);
+        return;
+      }
+
+      // 2️⃣ Tampilkan popup Midtrans
+      window.snap.pay(data.token, {
+        onSuccess: function (result) {
+          console.log("✅ Payment success:", result);
+          alert("Pembayaran berhasil!");
+        },
+        onPending: function (result) {
+          console.log("⏳ Payment pending:", result);
+          alert("Menunggu pembayaran...");
+        },
+        onError: function (result) {
+          console.log("❌ Payment error:", result);
+          alert("Terjadi kesalahan saat pembayaran!");
+        },
+        onClose: function () {
+          console.log("🧭 Payment popup closed");
+          alert("Kamu menutup jendela pembayaran.");
+        },
+      });
+    } catch (error) {
+      console.error("Gagal membuat transaksi:", error);
+      alert("Terjadi kesalahan!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <section className="relative w-full min-h-screen bg-stone-50 py-4 px-5 flex flex-col">
+    <section className="relative w-full min-h-screen bg-stone-50 pt-4 px-5 pb-30 flex flex-col">
       <CartBackButton />
 
       <h1 className="text-2xl font-bold text-stone-900 py-2 text-center">
@@ -52,7 +106,7 @@ export default function Cart() {
       <InputOrderNote />
       <InputOrderReceipt />
 
-      <div className="mt-auto bg-white p-4 rounded-2xl shadow-md">
+      <div className="fixed bottom-0 left-0 w-full h-30 bg-white p-4 rounded-t-2xl inset-shadow-2xs">
         <div className="flex justify-between mb-3">
           <p className="text-base font-bold text-stone-900">Total</p>
           <p className="text-base font-bold text-stone-800">
@@ -60,10 +114,11 @@ export default function Cart() {
           </p>
         </div>
         <button
+          onClick={handleCheckout}
+          disabled={cart.length === 0 || loading}
           className="w-full bg-[#747934] text-white py-3 rounded-xl text-base font-semibold hover:bg-[#5c602b] transition-colors"
-          disabled={cart.length === 0}
         >
-          Checkout Sekarang
+          {loading ? "Memproses..." : "Checkout Sekarang"}
         </button>
       </div>
     </section>
