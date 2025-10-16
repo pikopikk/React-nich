@@ -11,13 +11,12 @@ export default function Cart() {
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = async () => {
-    console.log("Checkout diklik")
     if (cart.length === 0) return;
     setLoading(true);
 
     try {
-      // 1️⃣ Buat transaksi di backend
-      const response = await fetch("http://localhost:5000/create-transaction", {
+      // Buat transaksi di backend
+      const response = await fetch("http://localhost:5000/api/payment/create-transaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -35,7 +34,7 @@ export default function Cart() {
         return;
       }
 
-      // 2️⃣ Tampilkan popup Midtrans
+      // Tampilkan popup Midtrans
       window.snap.pay(data.token, {
         onSuccess: function (result) {
           console.log("✅ Payment success:", result);
